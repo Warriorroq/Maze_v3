@@ -1,8 +1,10 @@
 #pragma once
 #include "Scene.h";
-Scene::Scene(string name) {
-	objects = new list<GameObject>();
-	this->name = &name;
+#include "Game.h"
+Scene::Scene(string name, bool *endGame) {
+	p_Objects = new list<GameObject>();
+	this->p_Name = &name;
+	this->p_EndGame = endGame;
 }
 Scene::~Scene() {
 	

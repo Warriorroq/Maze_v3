@@ -1,12 +1,13 @@
+#pragma once
 #include "Scene.h";
 class Game {
 public:
 	void Start();
+	Game();
 	~Game();
-protected:
-	bool p_Ended;
-	Scene *p_Scene;
 private:
+	bool p_Ended;
+	Scene* p_Scene;
 	void LoadContent();
 	void Init();
 	void Update();
