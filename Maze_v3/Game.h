@@ -1,5 +1,13 @@
 #pragma once
-#include "Scene.h";
+#include <windows.h>
+#include <iostream>
+#include <tchar.h>
+#include <stdio.h>
+#include <vector>
+#include "IDrawable.h"
+#include "IUpdatable.h"
+#include "DrawMatrix.h"
+using namespace std;
 class Game {
 public:
 	void Start();
@@ -7,9 +15,13 @@ public:
 	~Game();
 private:
 	bool p_Ended;
-	Scene* p_Scene;
+	vector<IUpdatable>* p_Updatables;
+	vector<IDrawable>* p_Drawables;
+	DrawMatrix* p_DrawMatrix;
 	void LoadContent();
 	void Init();
 	void Update();
 	void Draw();
+	void ReadEvents();
+	void ReadKey(KEY_EVENT_RECORD);
 };

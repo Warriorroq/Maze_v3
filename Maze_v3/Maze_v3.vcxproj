@@ -140,19 +140,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp" />
-    <ClCompile Include="GameMap.cpp" />
-    <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Maze_v3.cpp" />
-    <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="DrawMatrix.cpp" />
+    <ClCompile Include="Vector2Int.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DrawMatrix.h" />
     <ClInclude Include="Game.h" />
-    <ClInclude Include="GameMapCell.h" />
-    <ClInclude Include="GameObject.h" />
     <ClInclude Include="IDrawable.h" />
     <ClInclude Include="IUpdatable.h" />
-    <ClInclude Include="GameMap.h" />
-    <ClInclude Include="Scene.h" />
+    <ClInclude Include="Vector2Int.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
