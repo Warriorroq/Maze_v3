@@ -7,12 +7,13 @@
 #include "IDrawable.h"
 #include "Vector2Int.h"
 using namespace std;
-class DrawMatrix : IDrawable {
+class DrawMatrix : public IDrawable {
 public:
 	DrawMatrix(Vector2Int, char);
 	~DrawMatrix();
 	void Change(char, Vector2Int);
 	void Draw() override;
+	void ClearMatrix();
 private:
 	char _bgSymbol;
 	Vector2Int _Size;

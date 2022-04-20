@@ -15,8 +15,8 @@ public:
 	~Game();
 private:
 	bool p_Ended;
-	vector<IUpdatable>* p_Updatables;
-	vector<IDrawable>* p_Drawables;
+	vector<IUpdatable*>* p_Updatables;
+	vector<IDrawable*>* p_Drawables;
 	DrawMatrix* p_DrawMatrix;
 	void LoadContent();
 	void Init();
