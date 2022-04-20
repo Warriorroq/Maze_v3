@@ -1,7 +1,7 @@
 #include "Wall.h"
 Wall::Wall(Vector2Int pos) {
-	Position = pos;
+	_Position = pos;
 }
 void Wall::Draw(DrawMatrix* drawMatrix) {
-	drawMatrix->Change('#', Position);
+	drawMatrix->Change('#', _Position);
 }

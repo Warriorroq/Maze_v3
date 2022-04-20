@@ -1,8 +1,8 @@
 #include "Player.h"
 Player::Player(Vector2Int position, DrawMatrix* matrix, bool* end) {
-	p_Position = position;
-	p_Matrix = matrix;
-	this->p_End = end;
+	_Position = position;
+	_Matrix = matrix;
+	this->_End = end;
 }
 void Player::Update(char key) {
 	Vector2Int step;
@@ -23,13 +23,13 @@ void Player::Update(char key) {
 		step = Vector2Int();
 		break;
 	}
-	step += p_Position;
-	if (p_Matrix->GetDot(step) == '#')
+	step += _Position;
+	if (_Matrix->GetDot(step) == '#')
 		return;
-	if (p_Matrix->GetDot(step) == 'E')
-		*p_End = true;
-	p_Position = step;
+	if (_Matrix->GetDot(step) == 'E')
+		*_End = true;
+	_Position = step;
 }
 void Player::Draw(DrawMatrix* drawMatrix) {
-	drawMatrix->Change('@', p_Position);
+	drawMatrix->Change('@', _Position);
 }

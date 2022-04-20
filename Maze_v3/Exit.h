@@ -7,5 +7,5 @@ public:
 	Exit(Vector2Int);
 	void Draw(DrawMatrix*) override;
 private:
-	Vector2Int Position;
+	Vector2Int _Position;
 };

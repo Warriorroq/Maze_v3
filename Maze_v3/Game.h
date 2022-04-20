@@ -13,11 +13,12 @@ public:
 	~Game();
 private:
 	bool p_Ended;
-	vector<IUpdatable*>* p_Updatables;
-	vector<IDrawable*>* p_Drawables;
-	DrawMatrix* p_DrawMatrix;
+	vector<IUpdatable*>* _Updatables;
+	vector<IDrawable*>* _Drawables;
+	DrawMatrix* _DrawMatrix;
 	void LoadContent();
 	void Init();
+	void CreateEntities();
 	void Update(char key);
 	void Draw();
 	void StartCycle();

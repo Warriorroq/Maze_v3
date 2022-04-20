@@ -9,7 +9,7 @@ public:
 	void Update(char) override;
 	void Draw(DrawMatrix*) override;
 private:
-	Vector2Int p_Position;
-	DrawMatrix* p_Matrix;
-	bool* p_End;
+	Vector2Int _Position;
+	DrawMatrix* _Matrix;
+	bool* _End;
 };

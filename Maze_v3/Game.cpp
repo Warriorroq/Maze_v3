@@ -12,13 +12,13 @@ Game::~Game() {
 
 }
 void Game::Draw() {
-    p_DrawMatrix->ClearMatrix();
-    for (auto obj : *p_Drawables)
-        obj->Draw(p_DrawMatrix);
-    p_DrawMatrix->Draw();
+    _DrawMatrix->ClearMatrix();
+    for (auto obj : *_Drawables)
+        obj->Draw(_DrawMatrix);
+    _DrawMatrix->Draw();
 }
 void Game::Update(char key) {
-    for (auto obj : *p_Updatables)
+    for (auto obj : *_Updatables)
         obj->Update(key);
 }
 void Game::LoadContent() {
@@ -26,21 +26,24 @@ void Game::LoadContent() {
 }
 void Game::Init() {
 	p_Ended = false;
-    p_Updatables = new vector<IUpdatable*>();
-    p_Drawables = new vector<IDrawable*>();
-    p_DrawMatrix = new DrawMatrix(Vector2Int(100, 18), ' ');
+    _Updatables = new vector<IUpdatable*>();
+    _Drawables = new vector<IDrawable*>();
+    _DrawMatrix = new DrawMatrix(Vector2Int(100, 18), ' ');
+    CreateEntities();
+}
+void Game::CreateEntities() {
     for (int i = 0; i < 150; i++)
     {
         auto obj = new Wall(Vector2Int(rand() % 100, -rand() % 18));
-        p_Drawables->push_back(obj);
-        p_Updatables->push_back(obj);
+        _Drawables->push_back(obj);
+        _Updatables->push_back(obj);
     }
-    auto player = new Player(Vector2Int(rand() % 50, -rand() % 9), p_DrawMatrix, &p_Ended);
-    p_Drawables->push_back(player);
-    p_Updatables->push_back(player);
+    auto player = new Player(Vector2Int(rand() % 50, -rand() % 9), _DrawMatrix, &p_Ended);
+    _Drawables->push_back(player);
+    _Updatables->push_back(player);
     auto obj = new Exit(Vector2Int(rand() % 50 + 49, -(rand() % 9 + 8)));
-    p_Drawables->push_back(obj);
-    p_Updatables->push_back(obj);
+    _Drawables->push_back(obj);
+    _Updatables->push_back(obj);
 }
 void Game::Start() {
     StartCycle();
