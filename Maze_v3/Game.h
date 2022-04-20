@@ -1,8 +1,6 @@
 #pragma once
 #include <windows.h>
 #include <iostream>
-#include <tchar.h>
-#include <stdio.h>
 #include <vector>
 #include "IDrawable.h"
 #include "IUpdatable.h"

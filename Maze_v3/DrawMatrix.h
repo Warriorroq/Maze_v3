@@ -13,7 +13,9 @@ public:
 	void Change(char, Vector2Int);
 	void Draw();
 	void ClearMatrix();
+	char GetDot(Vector2Int);
 private:
+	bool PositionIsInMatrix(Vector2Int);
 	char _bgSymbol;
 	Vector2Int _Size;
 	vector<char> _DrawableMatrix;

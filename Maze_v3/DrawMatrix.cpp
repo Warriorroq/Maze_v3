@@ -28,9 +28,19 @@ void DrawMatrix::Draw() {
 	}
 }
 void DrawMatrix::Change(char symbol, Vector2Int pos) {
-	if (pos.Y > 0 || pos.Y < -_Size.Y + 1)
-		return;
-	if (pos.X < 0 || pos.X > _Size.X - 1)
+	if (!PositionIsInMatrix(pos))
 		return;
 	_DrawableMatrix[pos.X + -pos.Y * _Size.X] = symbol;
+}
+char DrawMatrix::GetDot(Vector2Int pos) {
+	if (!PositionIsInMatrix(pos))
+		return ' ';
+	return _DrawableMatrix[pos.X + -pos.Y * _Size.X];
+}
+bool DrawMatrix::PositionIsInMatrix(Vector2Int position) {
+	if (position.Y > 0 || position.Y < -_Size.Y + 1)
+		return false;
+	if (position.X < 0 || position.X > _Size.X - 1)
+		return false;
+	return true;
 }
