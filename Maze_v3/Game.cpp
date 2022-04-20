@@ -11,7 +11,7 @@ Game::~Game() {
 void Game::Draw() {
     p_DrawMatrix->ClearMatrix();
     for (auto obj : *p_Drawables)
-        obj->Draw();
+        obj->Draw(p_DrawMatrix);
     p_DrawMatrix->Draw();
 }
 void Game::Update() {
@@ -28,7 +28,7 @@ void Game::Init() {
     p_DrawMatrix = new DrawMatrix(Vector2Int(100, 9), ' ');
     for (int i = 0; i < 1000; i++)
     {
-        auto obj = new Wall(p_DrawMatrix, Vector2Int(rand() % 200, -rand() % 9));
+        auto obj = new Wall(Vector2Int(rand() % 200, -rand() % 9));
         p_Drawables->push_back(obj);
         p_Updatables->push_back(obj);
     }

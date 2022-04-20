@@ -1,12 +1,10 @@
 #include "Wall.h"
-Wall::Wall(DrawMatrix* matrix, Vector2Int pos) {
-	_DrawMatrix = matrix;
+Wall::Wall(Vector2Int pos) {
 	Position = pos;
 }
-void Wall::Draw() {
-	_DrawMatrix->Change('#', Position);
+void Wall::Draw(DrawMatrix* drawMatrix) {
+	drawMatrix->Change('#', Position);
 }
 void Wall::Update() {
-	
-	Position.X--;
+
 }
