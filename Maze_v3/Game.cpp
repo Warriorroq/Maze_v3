@@ -9,7 +9,9 @@ Game::Game() {
 	Init();
 }
 Game::~Game() {
-
+    _Updatables->clear();
+    _Drawables->clear();
+    delete _DrawMatrix;
 }
 void Game::Draw() {
     _DrawMatrix->ClearMatrix();
