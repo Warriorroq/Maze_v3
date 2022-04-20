@@ -1,7 +1,8 @@
 #include "Player.h"
-Player::Player(Vector2Int position, DrawMatrix* matrix) {
+Player::Player(Vector2Int position, DrawMatrix* matrix, bool* end) {
 	p_Position = position;
 	p_Matrix = matrix;
+	this->p_End = end;
 }
 void Player::Update(char key) {
 	Vector2Int step;
@@ -25,6 +26,8 @@ void Player::Update(char key) {
 	step += p_Position;
 	if (p_Matrix->GetDot(step) == '#')
 		return;
+	if (p_Matrix->GetDot(step) == 'E')
+		*p_End = true;
 	p_Position = step;
 }
 void Player::Draw(DrawMatrix* drawMatrix) {

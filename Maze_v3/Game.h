@@ -20,6 +20,8 @@ private:
 	void Init();
 	void Update(char key);
 	void Draw();
+	void StartCycle();
+	void End();
 	void ReadEvents();
 	void ReadKey(KEY_EVENT_RECORD);
 };

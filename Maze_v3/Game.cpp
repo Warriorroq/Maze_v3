@@ -3,6 +3,7 @@
 #include "Game.h";
 #include "Wall.h"
 #include "Player.h"
+#include "Exit.h"
 Game::Game() {
 	LoadContent();
 	Init();
@@ -34,18 +35,29 @@ void Game::Init() {
         p_Drawables->push_back(obj);
         p_Updatables->push_back(obj);
     }
-    auto player = new Player(Vector2Int(rand() % 100, -rand() % 9), p_DrawMatrix);
+    auto player = new Player(Vector2Int(rand() % 50, -rand() % 9), p_DrawMatrix, &p_Ended);
     p_Drawables->push_back(player);
     p_Updatables->push_back(player);
+    auto obj = new Exit(Vector2Int(rand() % 50 + 49, -(rand() % 9 + 8)));
+    p_Drawables->push_back(obj);
+    p_Updatables->push_back(obj);
 }
 void Game::Start() {
-	while (!p_Ended)
-	{
+    StartCycle();
+}
+void Game::StartCycle() {
+    while (!p_Ended)
+    {
         if (system("CLS")) system("clear");
         Draw();
         ReadEvents();
         this_thread::sleep_for(chrono::milliseconds(100));
-	}
+    }
+    End();
+}
+void Game::End() {
+    if (system("CLS")) system("clear");
+    cout << "Good Game";
 }
 void Game::ReadEvents() {
     /*DWORD cNumRead, fdwMode, i;

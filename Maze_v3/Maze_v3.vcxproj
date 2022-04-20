@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Exit.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Maze_v3.cpp" />
     <ClCompile Include="DrawMatrix.cpp" />
@@ -148,6 +149,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DrawMatrix.h" />
+    <ClInclude Include="Exit.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="IDrawable.h" />
     <ClInclude Include="IUpdatable.h" />
