@@ -9,6 +9,9 @@ public:
 	void Update(char) override;
 	void Draw(DrawMatrix*) override;
 private:
+	Vector2Int GetStep(char key);
+	void Move(Vector2Int step);
+	void Iteract(char item);
 	Vector2Int _Position;
 	DrawMatrix* _Matrix;
 	bool* _End;

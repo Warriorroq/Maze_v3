@@ -5,30 +5,35 @@ Player::Player(Vector2Int position, DrawMatrix* matrix, bool* end) {
 	this->_End = end;
 }
 void Player::Update(char key) {
-	Vector2Int step;
+	Vector2Int step = GetStep(key);
+	Move(step);
+	step += _Position;
+}
+Vector2Int Player::GetStep(char key) {
 	switch (key) {
 	case 'w':
-		step = Vector2Int(0, 1);
-		break;
+		return Vector2Int(0, 1);
 	case 's':
-		step = Vector2Int(0, -1);
-		break;
+		return Vector2Int(0, -1);
 	case 'a':
-		step = Vector2Int(-1, 0);
-		break;
+		return Vector2Int(-1, 0);
 	case 'd':
-		step = Vector2Int(1,0);
-		break;
+		return Vector2Int(1, 0);
 	default:
-		step = Vector2Int();
-		break;
+		return Vector2Int();
 	}
+}
+void Player::Move(Vector2Int step) {
 	step += _Position;
-	if (_Matrix->GetDot(step) == '#')
+	char item = _Matrix->GetDot(step);
+	if (item == '#')
 		return;
-	if (_Matrix->GetDot(step) == 'E')
-		*_End = true;
+	Iteract(item);
 	_Position = step;
+}
+void Player::Iteract(char item) {
+	if (item == 'E')
+		*_End = true;
 }
 void Player::Draw(DrawMatrix* drawMatrix) {
 	drawMatrix->Change('@', _Position);
