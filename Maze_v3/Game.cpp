@@ -14,9 +14,9 @@ void Game::Draw() {
         obj->Draw(p_DrawMatrix);
     p_DrawMatrix->Draw();
 }
-void Game::Update() {
+void Game::Update(char key) {
     for (auto obj : *p_Updatables)
-        obj->Update();
+        obj->Update(key);
 }
 void Game::LoadContent() {
 
@@ -36,10 +36,9 @@ void Game::Init() {
 void Game::Start() {
 	while (!p_Ended)
 	{
-        ReadEvents();
         if (system("CLS")) system("clear");
         Draw();
-        Update();
+        ReadEvents();
 	}
 }
 void Game::ReadEvents() {
@@ -54,6 +53,7 @@ void Game::ReadEvents() {
             ReadKey(irInBuf[i].Event.KeyEvent);
     }
 }
-void Game::ReadKey(KEY_EVENT_RECORD key) {
-    
+void Game::ReadKey(KEY_EVENT_RECORD keyboardCommand) {
+    auto key = keyboardCommand.uChar.AsciiChar;
+    Update(key);
 }

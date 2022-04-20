@@ -5,6 +5,3 @@ Wall::Wall(Vector2Int pos) {
 void Wall::Draw(DrawMatrix* drawMatrix) {
 	drawMatrix->Change('#', Position);
 }
-void Wall::Update() {
-
-}

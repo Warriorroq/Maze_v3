@@ -20,7 +20,7 @@ private:
 	DrawMatrix* p_DrawMatrix;
 	void LoadContent();
 	void Init();
-	void Update();
+	void Update(char key);
 	void Draw();
 	void ReadEvents();
 	void ReadKey(KEY_EVENT_RECORD);
