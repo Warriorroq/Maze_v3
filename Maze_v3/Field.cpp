@@ -61,3 +61,6 @@ bool Field::PositionIsInField(Vector2Int position) {
 int Field::ConvertVector2ToFieldCellIndex(Vector2Int position) {
 	return position.X + -position.Y * mainCamera->renderSize.X;
 }
+char Field::GetBackGroundSymbolCopy() {
+	return _BackgroundSymbol;
+}

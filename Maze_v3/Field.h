@@ -17,6 +17,7 @@ public:
 	void Draw();
 	void ClearField();
 	char GetPoint(Vector2Int);
+	char GetBackGroundSymbolCopy();
 private:
 	int ConvertVector2ToFieldCellIndex(Vector2Int);
 	void DrawField();

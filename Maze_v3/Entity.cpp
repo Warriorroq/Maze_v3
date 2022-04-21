@@ -6,3 +6,6 @@ Entity::Entity(Vector2Int position, char symbolToDraw) {
 void Entity::Draw(Field* field) {
 	field->ChangePointThrowGlobalPosition(p_SymbolToDraw, p_Position);
 }
+Vector2Int Entity::GetCopyOfPosition() {
+	return p_Position;
+}

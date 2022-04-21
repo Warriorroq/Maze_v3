@@ -6,6 +6,7 @@ class Entity : public IDrawable, public IUpdatable {
 public:
 	Entity(Vector2Int, char);
 	void Draw(Field*) override;
+	Vector2Int GetCopyOfPosition();
 protected:
 	Vector2Int p_Position;
 	char p_SymbolToDraw;
