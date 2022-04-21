@@ -16,8 +16,9 @@ public:
 	void ClearField();
 	char GetPoint(Vector2Int);
 private:
+	int ConvertVector2ToFieldCellIndex(Vector2Int);
 	void DrawField();
-	bool PositionIsInMatrix(Vector2Int);
+	bool PositionIsInField(Vector2Int);
 	char _BackgroundSymbol;
 	Camera* _MainCamera;
 	vector<char> _DrawableField;

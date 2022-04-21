@@ -9,11 +9,14 @@
 using namespace std;
 class Game {
 public:
-	void Start();
+	static void EndGame();
+	static void CreateGame();
+	static void StartGame();
+private:
 	Game();
 	~Game();
-private:
-	bool p_Ended;
+	static Game* _Game;
+	bool _Ended;
 	vector<IUpdatable*> _Updatables;
 	vector<IDrawable*> _Drawables;
 	Field* _DrawMatrix;
@@ -21,7 +24,6 @@ private:
 	void Update(char key);
 	void Draw();
 	void StartCycle();
-	void EndGame();
 	char ReadKey();
-	void ConnectEntity(Entity*);
+	void ConnectEntityToGameCycle(Entity*);
 };

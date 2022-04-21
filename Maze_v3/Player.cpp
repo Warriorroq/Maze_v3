@@ -1,17 +1,17 @@
 #include "Player.h"
-Player::Player(Vector2Int position, Field* matrix, bool* end, Camera* mainCam) : Entity(position,'@') {
-	_Matrix = matrix;
-	this->_End = end;
-	this->_MainCam = mainCam;
-	auto nextPosition = Vector2Int(_MainCam->renderSize.X / 2, -_MainCam->renderSize.Y / 2);
-	mainCam->position = p_Position - nextPosition;
+#include "Game.h"
+Player::Player(Vector2Int position, Field* matrix, Camera* mainCamera) : Entity(position,'@') {
+	_Field = matrix;
+	this->_MainCamera = mainCamera;
+	auto CameraOffSet = Vector2Int(_MainCamera->renderSize.X / 2, -_MainCamera->renderSize.Y / 2);
+	_MainCamera->position = p_Position - CameraOffSet;
 }
 void Player::Update(char key) {
-	Vector2Int step = GetStep(key);
-	Move(step);
-	step += p_Position;
+	Vector2Int offset = GetOffSet(key);
+	TryToMoveOrIteract(offset);
+	offset += p_Position;
 }
-Vector2Int Player::GetStep(char key) {
+Vector2Int Player::GetOffSet(char key) {
 	switch (key) {
 	case 'w':
 		return Vector2Int(0, 1);
@@ -25,16 +25,16 @@ Vector2Int Player::GetStep(char key) {
 		return Vector2Int();
 	}
 }
-void Player::Move(Vector2Int offSet) {
+void Player::TryToMoveOrIteract(Vector2Int offSet) {
 	auto newPlayerPosition = offSet + p_Position;
-	char item = _Matrix->GetPoint(newPlayerPosition);
+	char item = _Field->GetPoint(newPlayerPosition);
 	if (item == '#')
-		return;
+		return; //can't move
 	Iteract(item);
 	p_Position = newPlayerPosition;
-	_MainCam->position += offSet;
+	_MainCamera->position += offSet;
 }
 void Player::Iteract(char item) {
 	if (item == 'E')
-		*_End = true;
+		Game::EndGame();
 }

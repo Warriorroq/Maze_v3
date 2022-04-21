@@ -2,8 +2,10 @@
 #include <thread>
 #include "Game.h";
 #include "Player.h"
+#include "Entity.h"
+Game* Game::_Game = nullptr;
 Game::Game() {
-    p_Ended = false;
+    _Ended = false;
     _Updatables = vector<IUpdatable*>();
     _Drawables = vector<IDrawable*>();
     CreateEntities();
@@ -12,6 +14,10 @@ Game::~Game() {
     _Updatables.clear();
     _Drawables.clear();
     delete _DrawMatrix;
+}
+void Game::CreateGame()
+{
+    _Game = new Game();
 }
 void Game::Draw() {
     _DrawMatrix->ClearField();
@@ -26,20 +32,20 @@ void Game::Update(char key) {
 void Game::CreateEntities() {
     auto mainCamera = new Camera(Vector2Int(100, 18), Vector2Int());
     _DrawMatrix = new Field(mainCamera, ' ');
-    for (int i = 0; i < 400; i++)
-        ConnectEntity(new Entity(Vector2Int(rand() % 100 + 49, -(rand() % 100 + 8)), '#'));
-    ConnectEntity(new Player(Vector2Int(rand() % 50 + 100, -(rand() % 9 + 50)), _DrawMatrix, &p_Ended, mainCamera));
-    ConnectEntity(new Entity(Vector2Int(rand() % 50 + 49, -(rand() % 9 + 8)),'E'));
+    for (int i = 0; i < 2000; i++)
+        ConnectEntityToGameCycle(new Entity(Vector2Int(rand() % 300 + 49, -(rand() % 300 + 8)), '#'));
+    ConnectEntityToGameCycle(new Player(Vector2Int(rand() % 50 + 100, -(rand() % 9 + 30)), _DrawMatrix, mainCamera));
+    ConnectEntityToGameCycle(new Entity(Vector2Int(rand() % 50 + 49, -(rand() % 9 + 8)),'E'));
 }
-void Game::ConnectEntity(Entity* entity) {
+void Game::ConnectEntityToGameCycle(Entity* entity) {
     _Drawables.push_back(entity);
     _Updatables.push_back(entity);
 }
-void Game::Start() {
-    StartCycle();
+void Game::StartGame() {
+    _Game->StartCycle();
 }
 void Game::StartCycle() {
-    while (!p_Ended)
+    while (!_Ended)
     {
         system("CLS clear");
         Draw();
@@ -48,11 +54,12 @@ void Game::StartCycle() {
         Update(key);
         this_thread::sleep_for(chrono::milliseconds(100));
     }
-    EndGame();
-}
-void Game::EndGame() {
     system("CLS clear");
     cout << "Good Game";
+    delete _Game;
+}
+void Game::EndGame() {
+    _Game->_Ended = true;
 }
 char Game::ReadKey() {
     DWORD cNumRead, fdwMode, i;
