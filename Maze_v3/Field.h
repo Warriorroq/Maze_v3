@@ -11,6 +11,8 @@ class Field {
 public:
 	Field(Camera*, char);
 	~Field();
+	Camera* mainCamera;
+	void ChangePointThrowGlobalPosition(char, Vector2Int);
 	void ChangePoint(char, Vector2Int);
 	void Draw();
 	void ClearField();
@@ -20,6 +22,5 @@ private:
 	void DrawField();
 	bool PositionIsInField(Vector2Int);
 	char _BackgroundSymbol;
-	Camera* _MainCamera;
 	vector<char> _DrawableField;
 };

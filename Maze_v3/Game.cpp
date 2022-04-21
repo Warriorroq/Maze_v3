@@ -1,8 +1,9 @@
-#pragma once
+﻿#pragma once
 #include <thread>
 #include "Game.h";
 #include "Player.h"
 #include "Entity.h"
+#include "Fog.h"
 Game* Game::_Game = nullptr;
 Game::Game() {
     _Ended = false;
@@ -33,9 +34,10 @@ void Game::CreateEntities() {
     auto mainCamera = new Camera(Vector2Int(100, 18), Vector2Int());
     _DrawMatrix = new Field(mainCamera, ' ');
     for (int i = 0; i < 2000; i++)
-        ConnectEntityToGameCycle(new Entity(Vector2Int(rand() % 300 + 49, -(rand() % 300 + 8)), '#'));
+        ConnectEntityToGameCycle(new Entity(Vector2Int(rand() % 300 + 49, -(rand() % 300 + 8)), '!'));
     ConnectEntityToGameCycle(new Player(Vector2Int(rand() % 50 + 100, -(rand() % 9 + 30)), _DrawMatrix, mainCamera));
     ConnectEntityToGameCycle(new Entity(Vector2Int(rand() % 50 + 49, -(rand() % 9 + 8)),'E'));
+    ConnectEntityToGameCycle(new Fog(10, '#'));
 }
 void Game::ConnectEntityToGameCycle(Entity* entity) {
     _Drawables.push_back(entity);
