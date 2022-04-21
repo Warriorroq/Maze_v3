@@ -4,7 +4,8 @@
 #include <vector>
 #include "IDrawable.h"
 #include "IUpdatable.h"
-#include "DrawMatrix.h"
+#include "Field.h"
+#include "Entity.h"
 using namespace std;
 class Game {
 public:
@@ -13,16 +14,14 @@ public:
 	~Game();
 private:
 	bool p_Ended;
-	vector<IUpdatable*>* _Updatables;
-	vector<IDrawable*>* _Drawables;
-	DrawMatrix* _DrawMatrix;
-	void LoadContent();
-	void Init();
+	vector<IUpdatable*> _Updatables;
+	vector<IDrawable*> _Drawables;
+	Field* _DrawMatrix;
 	void CreateEntities();
 	void Update(char key);
 	void Draw();
 	void StartCycle();
-	void End();
-	void ReadEvents();
-	void ReadKey(KEY_EVENT_RECORD);
+	void EndGame();
+	char ReadKey();
+	void ConnectEntity(Entity*);
 };

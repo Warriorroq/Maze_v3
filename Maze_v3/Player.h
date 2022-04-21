@@ -1,18 +1,15 @@
 #pragma once
-#include "DrawMatrix.h"
-#include "IDrawable.h"
-#include "IUpdatable.h"
-#include "Vector2Int.h"
-class Player : public IDrawable, public IUpdatable {
+#include "Field.h"
+#include "Entity.h"
+class Player : public Entity {
 public:
-	Player(Vector2Int, DrawMatrix*, bool*);
+	Player(Vector2Int, Field*, bool*, Camera*);
 	void Update(char) override;
-	void Draw(DrawMatrix*) override;
 private:
+	Camera* _MainCam;
 	Vector2Int GetStep(char key);
 	void Move(Vector2Int step);
 	void Iteract(char item);
-	Vector2Int _Position;
-	DrawMatrix* _Matrix;
+	Field* _Matrix;
 	bool* _End;
 };

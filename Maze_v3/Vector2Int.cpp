@@ -17,3 +17,9 @@ Vector2Int& Vector2Int::operator-=(const Vector2Int& vec) {
     Y -= vec.Y;
     return *this;
 }
+Vector2Int Vector2Int::operator-(Vector2Int& vec) {
+    return Vector2Int(X - vec.X, Y - vec.Y);
+}
+Vector2Int Vector2Int::operator+(Vector2Int& vec) {
+    return Vector2Int(X + vec.X, Y + vec.Y);
+}

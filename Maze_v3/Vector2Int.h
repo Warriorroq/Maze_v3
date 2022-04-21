@@ -7,4 +7,6 @@ public:
 	int Y;
 	Vector2Int& operator+=(const Vector2Int&);
 	Vector2Int& operator-=(const Vector2Int&);
+	Vector2Int operator+(Vector2Int&);
+	Vector2Int operator-(Vector2Int&);
 };

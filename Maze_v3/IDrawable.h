@@ -1,7 +1,7 @@
 #pragma once
-#include "DrawMatrix.h"
+#include "Field.h"
 class IDrawable
 {
 public:
-	virtual void Draw(DrawMatrix* matrix) {};
+	virtual void Draw(Field* matrix) {};
 };	
