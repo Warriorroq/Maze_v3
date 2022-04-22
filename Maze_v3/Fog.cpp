@@ -1,7 +1,9 @@
 #include "Fog.h"
+
 Fog::Fog(int viewRadius, char fogSymbol) : Entity(Vector2Int(), fogSymbol) {
 	_ViewRadius = viewRadius;
 }
+
 void Fog::Draw(Field* field) {
 	auto renderSize = field->mainCamera->renderSize;
 	auto renderCenter = Vector2Int(renderSize.X/2, -renderSize.Y/2);

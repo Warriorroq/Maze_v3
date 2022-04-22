@@ -5,32 +5,39 @@
 #include "Entity.h"
 #include "Fog.h"
 #include "Compass.h"
+
 Game* Game::_Game = nullptr;
+
 Game::Game() {
     _Ended = false;
     _Updatables = vector<IUpdatable*>();
     _Drawables = vector<IDrawable*>();
     CreateEntities();
 }
+
 Game::~Game() {
     _Updatables.clear();
     _Drawables.clear();
     delete _DrawMatrix;
 }
+
 void Game::CreateGame()
 {
     _Game = new Game();
 }
+
 void Game::Draw() {
     _DrawMatrix->ClearField();
     for (auto obj : _Drawables)
         obj->Draw(_DrawMatrix);
     _DrawMatrix->Draw();
 }
+
 void Game::Update(char key) {
     for (auto obj : _Updatables)
         obj->Update(key);
 }
+
 void Game::CreateEntities() {
     auto mainCamera = new Camera(Vector2Int(100, 18), Vector2Int());
     _DrawMatrix = new Field(mainCamera, ' ');
@@ -57,13 +64,16 @@ void Game::CreateEntities() {
         this_thread::sleep_for(chrono::milliseconds(1500));
     }
 }
+
 void Game::ConnectEntityToGameCycle(Entity* entity) {
     _Drawables.push_back(entity);
     _Updatables.push_back(entity);
 }
+
 void Game::StartGame() {
     _Game->StartCycle();
 }
+
 void Game::StartCycle() {
     while (!_Ended)
     {
@@ -78,9 +88,11 @@ void Game::StartCycle() {
     cout << "Good Game";
     delete _Game;
 }
+
 void Game::EndGame() {
     _Game->_Ended = true;
 }
+
 char Game::ReadKey() {
     DWORD cNumRead, fdwMode, i;
     INPUT_RECORD irInBuf[128];
