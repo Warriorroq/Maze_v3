@@ -74,5 +74,8 @@
     <ClInclude Include="Compass.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="DrawSymbols.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

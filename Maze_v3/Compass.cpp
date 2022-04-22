@@ -1,6 +1,6 @@
 #include "Compass.h"
 
-Compass::Compass(Entity* player, Entity* exit, char compassArrow) : Entity(Vector2Int(), compassArrow) {
+Compass::Compass(Entity* player, Entity* exit, char compassArrow) : Entity(Vector2Int(1,-1), compassArrow) {
 	_Player = player;
 	_Exit = exit;
 }

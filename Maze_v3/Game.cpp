@@ -54,7 +54,7 @@ void Game::CreateEntities() {
     cin >> answerForFog;
     if (answerForFog == 'y') {
         cout << "View range? reccomend(7 - 12) y/n" << endl;
-        int viewRange;
+        int viewRange = 0;
         cin >> viewRange;
         ConnectEntityToGameCycle(new Fog(viewRange, FOG));
         ConnectEntityToGameCycle(new Compass(player, exit, COMPASS));

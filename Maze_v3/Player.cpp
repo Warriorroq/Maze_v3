@@ -32,7 +32,7 @@ Vector2Int Player::GetOffSet(char key) {
 void Player::TryToMoveOrIteract(Vector2Int offSet) {
 	auto newPlayerPosition = offSet + p_Position;
 	char item = _Field->GetPoint(newPlayerPosition);
-	if (item == '!')
+	if (item == WALL)
 		return; //can't move
 	Iteract(item);
 	p_Position = newPlayerPosition;
@@ -40,6 +40,6 @@ void Player::TryToMoveOrIteract(Vector2Int offSet) {
 }
 
 void Player::Iteract(char item) {
-	if (item == 'E')
+	if (item == EXIT)
 		Game::EndGame();
 }

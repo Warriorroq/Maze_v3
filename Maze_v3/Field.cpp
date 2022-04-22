@@ -17,9 +17,7 @@ Field::~Field() {
 void Field::ClearField() {
 	auto totalCells = mainCamera->renderSize.X * mainCamera->renderSize.Y;
 	for (int i = 0; i < totalCells; i++)
-	{
 		_DrawableField[i] = _BackgroundSymbol;
-	}
 }
 
 void Field::Draw() {
