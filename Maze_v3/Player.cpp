@@ -1,7 +1,7 @@
 #include "Player.h"
 #include "Game.h"
-
-Player::Player(Vector2Int position, Field* matrix, Camera* mainCamera) : Entity(position,'@') {
+#include "DrawSymbols.h"
+Player::Player(Vector2Int position, Field* matrix, Camera* mainCamera) : Entity(position, PLAYER) {
 	_Field = matrix;
 	this->_MainCamera = mainCamera;
 	auto CameraOffSet = Vector2Int(_MainCamera->renderSize.X / 2, -_MainCamera->renderSize.Y / 2);
