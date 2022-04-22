@@ -6,6 +6,7 @@
 #include "Fog.h"
 #include "Compass.h"
 #include "DrawSymbols.h"
+
 Game* Game::_Game = nullptr;
 
 Game::Game() {
@@ -39,7 +40,7 @@ void Game::Update(char key) {
 }
 
 void Game::CreateEntities() {
-    auto mainCamera = new Camera(Vector2Int(100, 18), Vector2Int());
+    auto mainCamera = new Camera(Vector2Int(36, 18), Vector2Int());
     _DrawMatrix = new Field(mainCamera, NOTHING);
     cout << "Creating entities..." << endl;
     this_thread::sleep_for(chrono::milliseconds(1500));
@@ -58,11 +59,11 @@ void Game::CreateEntities() {
         cin >> viewRange;
         ConnectEntityToGameCycle(new Fog(viewRange, FOG));
         ConnectEntityToGameCycle(new Compass(player, exit, COMPASS));
-        cout << "Game will start in a few seconds..."<<endl;
-        this_thread::sleep_for(chrono::milliseconds(1500));
-        cout << "We added compass to the left top..."<<endl;
-        this_thread::sleep_for(chrono::milliseconds(1500));
     }
+    cout << "Game will start in a few seconds..." << endl;
+    this_thread::sleep_for(chrono::milliseconds(1500));
+    cout << "We added compass to the left top..." << endl;
+    this_thread::sleep_for(chrono::milliseconds(1500));
 }
 
 void Game::ConnectEntityToGameCycle(Entity* entity) {
