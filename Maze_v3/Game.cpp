@@ -81,7 +81,6 @@ void Game::StartCycle() {
         system("CLS clear");
         Draw();
         auto key = ReadKey();
-        cout << key;
         Update(key);
         this_thread::sleep_for(chrono::milliseconds(100));
     }
